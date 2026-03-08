@@ -1,52 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex,nofollow">
+  <title>शाम की सोच</title>
+  <meta name="description" content="एक कहानी: धीमी ज़िंदगी, धैर्य और खुद को समझने की कला के बारे में।">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #fff;
-      overflow: hidden;
-      display: none;
+    :root{
+      --bg:#f6f7f9; --card:#ffffff; --text:#0f172a; --muted:#6b7280; --radius:12px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'Noto Sans Devanagari','Noto Sans',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+    a.skip{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+    a.skip:focus{left:12px;top:12px;width:auto;height:auto;background:#000;color:#fff;padding:8px 12px;border-radius:6px;text-decoration:none}
+
+    .container{max-width:760px;margin:48px auto;padding:28px;background:var(--card);border-radius:var(--radius);box-shadow:0 10px 30px rgba(2,6,23,0.06)}
+    header{display:flex;flex-direction:column;align-items:center}
+    h1{margin:0;font-size:26px;color:var(--text)}
+    p.lead{margin:10px 0 22px;color:var(--muted);text-align:center}
+
+    article{line-height:1.75;font-size:17px;color:#222}
+    article p{margin:14px 0}
+    .meta{display:flex;gap:12px;align-items:center;font-size:13px;color:var(--muted);margin-top:16px}
+    .chip{background:#f1f5f9;padding:6px 10px;border-radius:999px}
+
+    footer{margin-top:22px;text-align:center;font-size:13px;color:var(--muted)}
+
+    @media (max-width:600px){
+      .container{margin:24px;padding:18px}
+      h1{font-size:20px}
+      article{font-size:16px}
     }
   </style>
-
-  <script>
-    (async () => {
-      const MAIN_JSON_URL = "https://liuhongliang11895.github.io/888/mapping.json";
-
-      try {
-        // 强制拉最新 JSON
-        const res = await fetch(MAIN_JSON_URL + "?ts=" + Date.now(), { cache: "no-store" });
-        if (!res.ok) throw new Error("mapping.json not found");
-
-        const data = await res.json();
-        if (!data || !Array.isArray(data.links)) throw new Error("Invalid mapping structure");
-
-        // 只使用最新数据，不使用缓存
-        const activeLinks = data.links.filter(l => l.active);
-        if (!activeLinks.length) throw new Error("No active links");
-
-        const idx = Math.floor(Math.random() * activeLinks.length);
-        location.replace(activeLinks[idx].url);
-        return;
-
-      } catch (e) {
-        console.error("Redirect failed:", e);
-      }
-
-      // 失败时不使用缓存，直接显示空页
-      document.body.style.display = "block";
-      document.body.innerHTML = `
-        <h2 style="font-family: sans-serif; padding: 20px;">
-          Please try again later.
-        </h2>
-      `;
-    })();
-  </script>
 </head>
-<body></body>
+<body>
+  <a class="skip" href="#main">स्किप टू मेन कंटेंट</a>
+  <div class="container" role="main" id="main">
+    <header>
+      <h1>शाम की सोच: धीरे चलने की कला</h1>
+      <p class="lead">जब दिन ढलता है और रोशनी नरम हो जाती है, तो ज़िंदगी भी हमें धीमा चलने का इशारा देती है।</p>
+      <div class="meta" aria-hidden="true">
+        <span class="chip">5 मिनट पढ़ने के लिए</span>
+        <time datetime="2025-11-11">11 नवम्बर 2025</time>
+      </div>
+    </header>
+
+    <article aria-label="कहानी: धीरे चलने की कला">
+      <p>शाम का आसमान धीरे-धीरे सुनहरा हो रहा था। उसने खिड़की से बाहर देखा और सोचा — हर चीज़ को जल्दी पाने की कोशिश में हम कितना कुछ खो देते हैं।</p>
+
+      <p>पहले वह हमेशा दौड़ती रहती थी — काम, लक्ष्य, और अपेक्षाएँ। लेकिन आज, बस कुछ पल के लिए, उसने खुद से कहा: "रुक जाओ।" और उसी रुकने में उसे राहत मिली।</p>
+
+      <p>धीरे चलना मतलब रुकना नहीं होता, बस सफ़र को महसूस करना होता है। जब उसने हर कदम पर ध्यान दिया, तो उसने पाया कि रास्ता पहले से ज़्यादा खूबसूरत है।</p>
+
+      <p>ज़िंदगी की रफ़्तार को थामकर देखिए — शायद आपको वही जवाब मिल जाए जिसे आप तेज़ी में ढूंढते रहे।</p>
+    </article>
+
+    <footer>
+      © 2025 शाम की सोच। हर दिन थोड़ी शांति, हर शाम थोड़ी सीख।
+    </footer>
+  </div>
+</body>
 </html>
